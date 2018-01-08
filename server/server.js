@@ -30,7 +30,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/data', (req, res)=>{
-  User.find({User: 'cmm'}).then((doc)=>{
+  User.findOne({User: 'cmm'}).then((doc)=>{
     console.log('user: ', doc)
     return res.json(doc)
   },(err)=>{

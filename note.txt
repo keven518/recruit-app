@@ -1,1 +1,12 @@
 `npm run eject` 弹出配置文件，可以自定义配置webpack
+
+router
+1.cnpm i react-router-dom -S
+
+import { BrowserRouter, Route, Link } from 'react-router-dom'
+
+exact 就不包含app 7‘
+
+// 开启数据库
+1、mongod --config /usr/local/etc/mongod.conf
+2、mongo

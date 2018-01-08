@@ -1,0 +1,43 @@
+// 验证的页面
+import React from 'react'
+import { connect } from 'react-redux'
+import { login, getUserData } from './Auth.redux'
+import { Redirect } from 'react-router-dom'
+// import axios from 'axios'
+
+
+// 两个reducers 每个reducers都有一个state
+// 合并reducers
+@connect(
+  state => state.auth,
+  { login, getUserData }
+)
+class Auth extends React.Component{
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     data: {}
+  //   }
+  // }
+  render() {
+    return <div>
+      <h2>{console.log('re: ', this.props)}我的名字是{ this.props.User }，年龄{this.props.age}</h2>
+      { this.props.isAuth ? <Redirect to='/deshboard' /> : null }
+      <h2>你没有权限，需要登录才能看 {this.props.isAuth.toString()}</h2>
+      <button onClick={this.props.login}>登录</button>
+    {/* <img src={require('./1.png')} alt="" /> */}
+    </div>
+  }
+  componentDidMount() {
+    this.props.getUserData()
+    // axios.get('/data')
+    // .then(res=>{
+    //   if(res.status===200){
+    //     this.setState({data: res.data})
+    //     console.log(this.state.data.User)
+    //   }
+    // })
+  }
+}
+
+export default Auth

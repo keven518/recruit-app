@@ -1,46 +1,19 @@
-// import React, { Component } from 'react';
-// import logo from './logo.svg';
-// import './App.css';
-// import { createStore } from 'redux'
-
-// class App extends Component {
-//   render() {
-//     return (
-//       <div className="App">
-//         <header className="App-header">
-//           <img src={logo} className="App-logo" alt="logo" />
-//           <h1 className="App-title">柯文</h1>
-//         </header>
-//         <p className="App-intro">
-//           To get started, edit <code>src/App.js</code> and save to reload.
-//         </p>
-//       </div>
-//     );
-//   }
-// }
-
-// export default App;
-
 import React from 'react'
-import { Button, List } from 'antd-mobile'
-// import 'antd-mobile/dist/antd-mobile.css'
+import { connect } from 'react-redux'
+import { addGUN, removeGUN, addGUNAsync } from './index.redux'
+
+@connect((state)=>({ num: state.counter }), { addGUN, removeGUN, addGUNAsync })
 
 class App extends React.Component{
-  render() {
-    const boss = '李云龙'
+  render(){
     return (
       <div>
-        <h2>独立团，{boss}</h2>
-        <List renderHeader={()=>'士兵列表'}>
-          <List.Item>keven</List.Item>
-          <List.Item>cmm</List.Item>
-          <List.Item>柯文</List.Item>
-          <List.Item>蔡曼曼</List.Item>
-        </List>
-        <Button>asdf</Button>
+        <h1>现在keven有机关枪 {this.props.num}把 </h1>
+        <button onClick={this.props.addGUN}>申请武器</button>
+        <button onClick={this.props.removeGUN}>上缴武器</button>
+        <button onClick={this.props.addGUNAsync}>异步申请武器</button>
       </div>
     )
   }
 }
-
 export default App
