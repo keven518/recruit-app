@@ -10,3 +10,10 @@ exact 就不包含app 7‘
 // 开启数据库
 1、mongod --config /usr/local/etc/mongod.conf
 2、mongo
+
+// 6-3
+package.json
+babel-plugin-import 按需加载
+
+// 6-6
+关于 return 问题

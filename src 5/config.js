@@ -10,6 +10,8 @@ axios.interceptors.request.use((config) => {
 //  拦截相应
 axios.interceptors.response.use((config) => {
   console.log('config: ', config)
-  Toast.hide()
+  setTimeout(()=>{
+    Toast.hide()
+  }, 0)
   return config
 })

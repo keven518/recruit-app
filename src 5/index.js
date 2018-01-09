@@ -5,31 +5,43 @@ import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom'
 // import { counter } from './index.redux'
-
-import Login from './containers/login/login'
-import Register from './containers/register/register'
-import AuthRoute from './component/authroute/authroute'
 import reducers from './reducer'
 
+import Auth from './Auth'
+import Dashboard from './Dashboard'
 import './config'
-import './index.css'
 
 const store = createStore(reducers,
   compose(applyMiddleware(thunk),
   window.devToolsExtension ? window.devToolsExtension() : f => f
 ))
 console.log('state: ', store.getState())
-const Boss = () => <h2>BOSS页面</h2>
+// let Cmm = () => <h2> cmm </h2>
+// let Cj = () => <h2> cj </h2>
+// let Cw = () => <h2> cw</h2>
+// class Text extends React.Component {
+//   constructor(props) {
+//     super(props)
+//   }
+//   render() {
+//     console.log(this.props)
+//     return <h2>测试组建 {this.props.match.params.location}</h2>
+//   }
+// }
+
+// 登录 没有登录信息 统一跳转login
+// 页面 导航+显示+注销 cmm cw cj
+// router + redux
+
 
 ReactDOM.render(
   (<Provider store={store}>
   <BrowserRouter>
-    <div>
-      <AuthRoute></AuthRoute>
-      <Route path='/boss' component={Boss}></Route>
-      <Route path='/login' component={Login}></Route>
-      <Route path='/register' component={Register}></Route>
-    </div>
+    <Switch>
+      <Route path='/login' component={Auth}></Route>
+      <Route path='/dashboard' component={Dashboard}></Route>
+      <Redirect to='/dashboard'></Redirect>
+    </Switch>
   </BrowserRouter>
   </Provider>),
   document.getElementById('root'),
