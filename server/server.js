@@ -1,16 +1,28 @@
 const express = require('express')
-const utils = require('utility')
+// const utils = require('utility') 
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
+const app = express()
+// work with express
+const server = require('http').Server(app)
+
+const io = require('socket.io')(server)
+
+io.on('connection', (socket) => {
+  // console.log('user login')
+  socket.on('sendmsg', (data) => {
+    console.log(data)
+    io.emit('recvmsg', data)
+  })
+})
 
 const userRouter = require('./user')
 
-// 新建app
-const app = express()
+
 app.use(cookieParser())
 app.use(bodyParser.json())
 app.use('/user', userRouter)
 
-app.listen(9093,() => {
+server.listen(9093,() => {
   console.log('Node app start at port 9093')
 })

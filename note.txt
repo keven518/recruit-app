@@ -17,3 +17,10 @@ babel-plugin-import 按需加载
 
 // 6-6
 关于 return 问题
+
+avatar-selector 如何把选择的图片传给bossinfo的
+为什么要删除user.js中的39行
+onClick={this.handleSubmit} = onClick={() => this.handleSubmit()}
+
+// 9-3
+redux 数据不能在componentDidMount()中显示
